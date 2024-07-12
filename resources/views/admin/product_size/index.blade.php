@@ -21,9 +21,6 @@
                             <!-- Column starts -->
                             <div class="col-xl-12">
                                 <div class="card dz-card" id="accordion-one">
-                                    <div class="col-xl-12" style="margin-left: 15px; margin-top:15px">
-                                        <a href="{{ route('genre.create') }}" class="btn btn-primary mb-3">Create Product-Size</a>
-                                    </div>
                                     <div class="card-header flex-wrap">
                                         <div>
                                             <h4 class="card-title">Product-Sizes</h4>
@@ -47,7 +44,7 @@
                                             aria-labelledby="home-tab">
                                             <div class="card-body pt-0">
                                                 <div class="table-responsive">
-                                                    <table id="example" class="display table" style="width: 100%"> 
+                                                    <table id="example" class="display table" style="width: 100%">
                                                         <thead>
                                                             <tr>
                                                                 <th>ID</th>
@@ -76,12 +73,14 @@
                                                                     </td>
 
                                                                     <td class="text-start">
-                                                                        <a href=""
+                                                                        <a href="{{ route('variant.edit', ['id' => $item->id, 'id_sp' => $item->id_sp]) }}"
                                                                             class="btn btn-warning btn-sm content-icon">
                                                                             <i class="fa fa-edit"></i>
                                                                         </a>
-                                                                        <form action="" method="post"
-                                                                            style="display:inline-block">
+
+                                                                        <form
+                                                                            action="{{ route('variant.delete', $item->id) }}"
+                                                                            method="post" style="display:inline-block">
                                                                             @csrf
                                                                             @method('DELETE')
                                                                             <button
@@ -176,12 +175,12 @@
                                                                     @endif
                                                                 </td>
                                                                 <td class="text-start">
-                                                                    <a href="{{route('size.edit',$item->id)}}"
+                                                                    <a href="{{ route('size.edit', $item->id) }}"
                                                                         class="btn btn-warning btn-sm content-icon">
                                                                         <i class="fa fa-edit"></i>
                                                                     </a>
-                                                                    <form action="{{route('size.delete',$item->id)}}" method="post"
-                                                                        style="display:inline-block">
+                                                                    <form action="{{ route('size.delete', $item->id) }}"
+                                                                        method="post" style="display:inline-block">
                                                                         @csrf
                                                                         @method('DELETE')
                                                                         <button

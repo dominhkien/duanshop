@@ -80,7 +80,7 @@ class ProductController extends Controller
         $category = Category::all();
         $product = Product::join('the_loai','san_pham.id_the_loai','=','the_loai.id')
         ->join('thuong_hieu','san_pham.id_thuong_hieu','=','thuong_hieu.id')
-        ->select('san_pham.*','the_loai.ten_loai as ten_tl','thuong_hieu.ten_thuong_hieu as ten_th')
+        ->select('san_pham.*','the_loai.ten_loai as ten_tl','thuong_hieu.ten_thuong_hieu as ten_th','the_loai.id as id_tl','thuong_hieu.id as id_th')
         ->where('san_pham.id',$product->id)
         ->first();
         return view('admin.products.edit',compact('product','category','brand'));
@@ -103,7 +103,7 @@ class ProductController extends Controller
             $data["anh"] = $product->anh;                             
         }
         
-        $is_update = Product::find($product->id)->update(
+        $is_update = Product::where('id',$product->id)->update(
             [
                 "anh" => $data["anh"],
                 "ten" => $data["ten"],

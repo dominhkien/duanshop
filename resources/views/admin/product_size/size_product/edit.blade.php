@@ -1,6 +1,6 @@
 @extends('layout.admin')
 @section('title')
-    Edit Brand    
+    Edit   
 @endsection
 @section('content')
 <div class="content-body">
@@ -14,19 +14,38 @@
                 <div class="filter cm-content-box box-primary">
                     <div class="content-title">
                         <div class="cpa">
-                        Edit Brand		
+                        Edit 		
                         </div>
                     </div>
                     <div class="cm-content-body form excerpt">
                         <div class="card-body">
-                            <form method="post" action="{{route('brand.update',$brand->id)}}" class="row">
+                            <form method="post" action="{{route('variant.update',$variant->id)}}" class="row">
                                 @csrf
-                                @method('PUT')
+                                @method('PUT');
+                                <input type="hidden" name="id_sp" value="{{$product->id}}">
                                 <div class="col-xl-12 text-center">
                                     <div >
                                         <div class="mb-3 text-center">
-                                            <label class="form-label">Edit Brand</label>
-                                            <input name="ten_thuong_hieu" type="text" class="form-control" value="{{$brand->ten_thuong_hieu}}" style="width: 50%; margin: 0 auto;" placeholder="Name Brand">
+                                            <label class="form-label">Name Product</label>
+                                            <input readonly  type="text" class="form-control" value="{{$product->ten}}" style="width: 50%; margin: 0 auto;" >
+                                        </div>
+                                        <div style="width: 50%; margin: 0 auto;" class="mb-3 text-center">
+                                            <label class="form-label">Size</label>
+                                            <select name="size" id="inputState"  class="default-select form-control wide">
+                                                {{-- <option value="{{$variant->id_kc}}">{{$variant->kich_co}}</option> --}}
+                                                
+                                                @foreach ($size as $item)
+                                                    <option value="{{$item->id}}" {{$item->id == $variant->id_kc ? 'selected' : '' }}>{{$item->kich_co}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="mb-3 text-center">
+                                            <label class="form-label">Quatity</label>
+                                            <input name="quatity" type="text" class="form-control" style="width: 50%; margin: 0 auto;" value="{{$variant->so_luong}}" >
+                                        </div>
+                                        <div class="mb-3 text-center">
+                                            <label class="form-label">Price</label>
+                                            <input name="price" type="text" class="form-control" style="width: 50%; margin: 0 auto;" value="{{$variant->gia}}">
                                         </div>
                                     </div>
                                 </div>

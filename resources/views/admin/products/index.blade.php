@@ -66,6 +66,10 @@
                                                             class="btn btn-warning btn-sm content-icon">
                                                             <i class="fa fa-edit"></i>
                                                         </a>
+                                                        <a href="{{ route('variant.create', $item->id) }}"
+                                                            class="btn btn-success btn-sm content-icon">
+                                                            <i class="fa fa-edit"></i>
+                                                        </a>
                                                         <form action="{{route('product.delete',$item->id)}}" method="post" style="display:inline-block">
                                                             @csrf
                                                             @method('DELETE')
