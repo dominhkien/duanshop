@@ -49,6 +49,10 @@
     <!-- Main js -->
     <script src="{{ asset('client/js/main.js') }}"></script>
 
+    @stack('script')
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+    <df-messenger intent="WELCOME" chat-title="duanshop" agent-id="4eb3ce7a-178e-4a19-93af-feaa9c5acdf2"
+        language-code="vi"></df-messenger>
 </body>
 
 

@@ -8,6 +8,7 @@ use App\Http\Controllers\DashboardAccountController;
 use App\Http\Controllers\SizeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardSizeController;
+use App\Http\Controllers\DetailController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\VariantProductController;
 use Illuminate\Support\Facades\Route;
@@ -72,3 +73,5 @@ Route::get('/account',[DashboardAccountController::class,'index'])->name('accoun
 
 Route::get('/',[ClientController::class,'index'])->name('client.index');
 //end dashboard
+// details
+Route::get('/product-detail/{id}',[DetailController::class,'index'])->name('detail.index');

@@ -31,51 +31,16 @@
                         <div class="product-filter col-lg-3 col-md-6 col-12 mb-30">
                             <h5>Sort by</h5>
                             <ul class="sort-by">
-                                <li><a href="#">Default</a></li>
-                                <li><a href="#">Popularity</a></li>
-                                <li><a href="#">Average rating</a></li>
-                                <li><a href="#">Newness</a></li>
                                 <li><a href="#">Price: Low to High</a></li>
                                 <li><a href="#">Price: High to Low</a></li>
                             </ul>
                         </div>
                         <!-- Product Filter -->
-                        <div class="product-filter col-lg-3 col-md-6 col-12 mb-30">
-                            <h5>color filters</h5>
-                            <ul class="color-filter">
-                                <li><a href="#"><i style="background-color: #000000;"></i>Black</a></li>
-                                <li><a href="#"><i style="background-color: #663300;"></i>Brown</a></li>
-                                <li><a href="#"><i style="background-color: #FF6801;"></i>Orange</a></li>
-                                <li><a href="#"><i style="background-color: #ff0000;"></i>red</a></li>
-                                <li><a href="#"><i style="background-color: #FFEE00;"></i>Yellow</a></li>
-                            </ul>
-                        </div>
+                        
                         <!-- Product Filter -->
-                        <div class="product-filter col-lg-3 col-md-6 col-12 mb-30">
-                            <h5>product tags</h5>
-                            <div class="product-tags">
-                                <a href="#">New</a>,
-                                <a href="#">brand</a>,
-                                <a href="#">black</a>,
-                                <a href="#">white</a>,
-                                <a href="#">chire</a>,
-                                <a href="#">table</a>,
-                                <a href="#">Lorem</a>,
-                                <a href="#">ipsum</a>,
-                                <a href="#">dolor</a>,
-                                <a href="#">sit</a>,
-                                <a href="#">amet</a>
-                            </div>
-                        </div>
+                        
                         <!-- Product Filter -->
-                        <div class="product-filter col-lg-3 col-md-6 col-12 mb-30">
-                            <h5>Filter by price</h5>
-                            <div id="price-range"></div>
-                            <div class="price-values">
-                                <span>Price:</span>
-                                <input type="text" class="price-amount">
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -89,7 +54,7 @@
                     <!-- Product Image -->
                     <div class="product-img">
                         <!-- Image -->
-                        <a class="image" href="product-details.html"><img src="{{asset('storage/'. $item->anh)}}" alt=""/></a>
+                        <a class="image" href="{{route('detail.index',$item->id)}}"><img src="{{asset('storage/'. $item->anh)}}" alt=""/></a>
                         <!-- Wishlist Button -->
                         <!-- Action Button -->
                         <div class="action-btn fix">
@@ -100,7 +65,7 @@
                     <!-- Portfolio Info -->
                     <div class="product-info text-left">
                         <!-- Title -->
-                        <h5 class="title"><a href="product-details.html">{{$item->ten}}</a></h5>
+                        <h5 class="title"><a href="{{route('detail.index',$item->id)}}">{{$item->ten}}</a></h5>
                         <!-- Price Ratting -->
                     </div>
                 </div>
