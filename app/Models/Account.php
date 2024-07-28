@@ -9,9 +9,9 @@ class Account extends Model
 {
     use HasFactory;
     protected $fillable = [
-        "anh","ten","email","mat_khau","dia_chi"
+        "anh","ten","email","password","dia_chi"
     ] ;
-    protected $table = 'tai_khoan';
+    protected $table = 'users';
 
     public $timestamps =false;
 }

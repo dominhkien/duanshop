@@ -105,7 +105,7 @@
                     <div class="col-xs-12">
                         <div class="product-item text-center">
                             <div class="product-img">
-                                <a class="image" href="product-details.html"><img src="{{ asset('storage/'.$item->anh) }}"
+                                <a class="image" href="{{route('detail.index',$item->id)}}"><img src="{{ asset('storage/'.$item->anh) }}"
                                         alt="" /></a>
                                 <div class="action-btn fix">
                                     <a href="#" data-bs-toggle="modal" data-bs-target="#quickViewModal"
@@ -114,7 +114,7 @@
                                 </div>
                             </div>
                             <div class="product-info text-left">
-                                <h5 class="title"><a href="product-details.html">{{$item->ten}}</a></h5>
+                                <h5 class="title"><a href="{{route('detail.index',$item->id)}}">{{$item->ten}}</a></h5>
                                 <div class="price-ratting fix">
                                     {{-- <span class="price float-start"><span class="new">{{$item->gia}}</span></span> --}}
                                 </div>
