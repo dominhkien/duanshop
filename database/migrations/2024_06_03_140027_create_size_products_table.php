@@ -11,9 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('size_products', function (Blueprint $table) {
+        Schema::create('sanpham_kichco', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->unsignedBigInteger('id_sp');
+            $table->unsignedBigInteger('id_kc');
+            $table->integer('so_luong');
+            $table->integer('gia');
+            $table->integer('trang_thai')->default(1);
+            $table->timestamps();  
+
+            // Foreign keys
+            $table->foreign('id_sp')->references('id')->on('san_pham')->onDelete('cascade');
+            $table->foreign('id_kc')->references('id')->on('kich_co')->onDelete('cascade');
         });
     }
 

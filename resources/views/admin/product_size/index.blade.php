@@ -232,4 +232,18 @@
             </div>
         </div>
     </div>
+    @if (session('success'))
+    <div class="center-screen">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">{{session('success')}}</h4>
+                <div class="card-content">
+                    <div class="sweetalert">
+                        <button class="ms-3 btn btn-success btn sweet-success">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endif
 @endsection

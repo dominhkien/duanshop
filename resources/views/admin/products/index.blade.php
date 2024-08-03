@@ -22,7 +22,11 @@
                             <!-- Column starts -->
                             <div class="col-xl-12">
                                 <div class="card dz-card" id="accordion-one">
+                                    <div class="col-xl-12" style="margin-left: 15px; margin-top:15px">
+                                        <a href="{{route('product.create')}}" class="btn btn-primary mb-3">Create Product</a>
+                                    </div>
                                     <div class="card-header flex-wrap">
+                                        
                                         <div>
                                             <h4 class="card-title">Product</h4>
                                         </div>
@@ -85,7 +89,7 @@
                                                                         </a>
                                                                         <a href="{{ route('variant.create', $item->id) }}"
                                                                             class="btn btn-success btn-sm content-icon">
-                                                                            <i class="fa fa-edit"></i>
+                                                                            <i class="fa-solid fa-diagram-project"></i>
                                                                         </a>
                                                                         <form
                                                                             action="{{ route('product.delete', $item->id) }}"
@@ -140,4 +144,18 @@
             </div>
         </div>
     </div>
+    @if (session('success'))
+    <div class="center-screen">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">{{session('success')}}</h4>
+                <div class="card-content">
+                    <div class="sweetalert">
+                        <button class="ms-3 btn btn-success btn sweet-success">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endif
 @endsection

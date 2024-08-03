@@ -1,4 +1,4 @@
-<p>Hello,</p>
+<p>Hello, User</p>
 
 <p>Your new password is: <strong>{{ $newPassword }}</strong></p>
 

@@ -11,9 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sizes', function (Blueprint $table) {
+        Schema::create('kich_co', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->integer('kich_co');
+            $table->integer('trang_thai')->default(1);
+            $table->timestamps();  
         });
     }
 

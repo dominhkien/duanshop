@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreSizeProductRequest extends FormRequest
+class RegisterRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,9 +22,10 @@ class StoreSizeProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'size'=>'bail|required|exists:kich_co,id',
-            'quatity'=>'required|integer',
-            'price'=>'required|numeric|min:0'
+            'name'=>'bail|required|max:255',
+            'email' => 'bail|required|email|unique:users,email',
+            'password' => 'bail|required|min:8',
+            'password_comfirm' => 'bail|same:password'
         ];
     }
 }

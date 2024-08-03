@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RegisterRequest;
 use App\Models\Account;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -14,7 +15,7 @@ class RegisterController extends Controller
     }
 
     
-    public function store(Request $request)
+    public function store(RegisterRequest $request)
     {
         $check = Account::where('email',$request->email)->exists();
         if($check){

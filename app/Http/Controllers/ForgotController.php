@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ForgotRequest;
 use App\Models\Account;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -16,7 +17,7 @@ class ForgotController extends Controller
     }
 
    
-    public function forgot(Request $request)
+    public function forgot(ForgotRequest $request)
     {
         $user = Account::where('email',$request->email)->first();
         if($user){

@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 
+
 class ProductController extends Controller
 {
     /**
@@ -37,6 +38,7 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
+        
         $data = $request->all();
         if ($request->hasFile("anh")) {
             $file = $request->anh;
@@ -56,10 +58,10 @@ class ProductController extends Controller
             ]
         );
         if( $is_insert ){
-            return redirect()->route('product.index')->with('success','SUCCESS');
+            return redirect()->route('product.index')->with('success','Successfully');
         }
         else{
-            return redirect()->route('product.create')->with('error','ERROR');
+            return back()->with('error','ERROR');
         }
     }
 
@@ -102,7 +104,7 @@ class ProductController extends Controller
         else{
             $data["anh"] = $product->anh;                             
         }
-        
+       // dd($data);
         $is_update = Product::where('id',$product->id)->update(
             [
                 "anh" => $data["anh"],
@@ -113,10 +115,10 @@ class ProductController extends Controller
             ]
         );
         if( $is_update ){
-            return redirect()->route('product.index')->with('success','SUCCESS');
+            return redirect()->route('product.index')->with('success','Successfully');
         }
         else{
-            return redirect()->route('product.edit')->with('error','ERROR');
+            return back()->with('error','ERROR');
         }
     }
 
@@ -126,6 +128,6 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
-        return redirect()->route('product.index')->with('success','');
+        return redirect()->route('product.index')->with('success','Successfully');
     }
 }

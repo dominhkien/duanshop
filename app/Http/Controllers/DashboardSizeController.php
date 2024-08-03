@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreSizeProductRequest;
 use \App\Models\Size;
 use \App\Models\SizeProduct;
 class DashboardSizeController extends Controller
@@ -24,7 +25,7 @@ class DashboardSizeController extends Controller
         
         return view('admin.product_size.size_product.create',compact('size','product'));
     }
-    public function store(Request $request){
+    public function store(StoreSizeProductRequest $request){
         $data = [
             'id_sp'=>$request->id_sp,
             'id_kc'=> $request->size,
@@ -33,12 +34,12 @@ class DashboardSizeController extends Controller
         ];
         
         SizeProduct::create($data);
-        return redirect()->route('dashboardsize.index');
+        return redirect()->route('dashboardsize.index')->with("success","Successfully");
     }
     public function destroy(string $id){
        
         SizeProduct::where('id',$id)->delete();
-        return back();
+        return back()->with("success","Successfully");
     }
     public function swap(){
 
@@ -58,6 +59,6 @@ class DashboardSizeController extends Controller
         ];
         
         SizeProduct::where('id',$id)->update($data);
-        return redirect()->route('dashboardsize.index');
+        return redirect()->route('dashboardsize.index')->with("success","Successfully");
     }
 }

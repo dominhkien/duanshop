@@ -22,7 +22,13 @@ class StoreProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'ten'=>'bail|required|max:255|unique:san_pham,ten',
+            'anh'=>'bail|required|file|mimes:jpg,png,webp,jpeg',
+            'tl' => 'required|exists:the_loai,id',
+
+            'th' => 'required|exists:thuong_hieu,id',
+
+            'mo_ta'=>'bail|required|string'
         ];
     }
 }

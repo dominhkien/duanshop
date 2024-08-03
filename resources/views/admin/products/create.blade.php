@@ -32,10 +32,16 @@
                                                         <div class="mb-3 col-md-6">
                                                             <label class="form-label">Name Product</label>
                                                             <input name="ten" type="text" class="form-control" placeholder="Name Product">
+                                                            @error('ten')
+                                                                <p class="text-danger">{{$message}}</p>
+                                                            @enderror
                                                         </div>
                                                         <div class="mb-3 col-md-6">
                                                             <label class="form-label">Image</label>
                                                             <input name="anh" type="file" class="form-control" >
+                                                            @error('anh')
+                                                                <p class="text-danger">{{$message}}</p>
+                                                            @enderror
                                                         </div>
                                                         
                                                     </div>
@@ -48,6 +54,9 @@
                                                                     <option value="{{$item1->id}}">{{$item1->ten_loai}}</option>
                                                                 @endforeach
                                                             </select>
+                                                            @error('tl')
+                                                                <p class="text-danger">{{$message}}</p>
+                                                            @enderror
                                                         </div>
                                                         <div class="mb-3 col-md-3">
                                                             <label class="form-label">Brands</label>
@@ -57,12 +66,18 @@
                                                                     <option value="{{$item->id}}">{{$item->ten_thuong_hieu}}</option>
                                                                 @endforeach
                                                             </select>
+                                                            @error('th')
+                                                                <p class="text-danger">{{$message}}</p>
+                                                            @enderror
                                                         </div>
                                                     </div>
-                                                    <div class="mb-3 col-md-6">
+                                                    <div class="mb-3 col-md-12">
                                                         <label class="form-label">Describe</label>
+                                                        <textarea name="mo_ta" class="form-control" rows="5"></textarea>
+                                                        @error('mo_ta')
+                                                                <p class="text-danger">{{$message}}</p>
+                                                            @enderror
                                                     </div>
-                                                    <textarea name="mo_ta" id="" cols="80" rows="5"></textarea>
                                             </div>
                                         </div>
                                     </div>

@@ -14,5 +14,8 @@ class DashboardController extends Controller
         $categories = Category::all();
         return view('admin.genre_brand.index', compact('brands', 'categories'));
     }
+    public function home(){
+        return view('admin.index');
+    }
 }
 

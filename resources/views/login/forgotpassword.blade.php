@@ -11,10 +11,14 @@
                 <div class="login-reg-form">
                     <form action="{{route('post.forgot')}}" method="post">
                         @csrf
+                        <h3>Forgot Password</h3>
                         <div class="row">
                             <div class="col-12 mb-20">
                                 <label for="email">Email <span class="required">*</span></label>
                                 <input name="email" id="email" type="email">
+                                @error('email')
+                                    <p class="text-danger">{{$message}}</p>
+                                @enderror
                             </div>
                             <div class="col-12 mb-20">
                                 <input value="Done" name="done" class="inline" type="submit">

@@ -22,7 +22,8 @@ class UpdateProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'ten'=> 'bail|required|unique:san_pham,ten',
+            'anh'=>'bail|'
         ];
     }
 }

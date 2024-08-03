@@ -11,9 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('brands', function (Blueprint $table) {
+        Schema::create('thuong_hieu', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('ten_thuong_hieu', 100);
+            $table->integer('trang_thai')->default(1);
+            $table->timestamps();  
         });
     }
 

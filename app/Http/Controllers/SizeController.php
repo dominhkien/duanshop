@@ -31,7 +31,7 @@ class SizeController extends Controller
     public function store(StoreSizeRequest $request)
     {
         $size = Size::create($request->all());
-        return redirect()->route("dashboardsize.index")->with("success","");
+        return redirect()->route("dashboardsize.index")->with("success","Successfully");
     }
 
     /**
@@ -56,7 +56,7 @@ class SizeController extends Controller
     public function update(UpdateSizeRequest $request, Size $size)
     {
         $size->update($request->all());
-        return redirect()->route("dashboardsize.index")->with("success","");
+        return redirect()->route("dashboardsize.index")->with("success","Successfully");
     }
 
     /**
@@ -65,6 +65,6 @@ class SizeController extends Controller
     public function destroy(Size $size)
     {
         $size->delete();
-        return redirect()->route("dashboardsize.index")->with("success","");
+        return redirect()->route("dashboardsize.index")->with("success","Successfully");
     }
 }

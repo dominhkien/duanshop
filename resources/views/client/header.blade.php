@@ -42,7 +42,7 @@
                                     
                                     @if (Auth::check())
                                     <li><a href="{{route('myaccount.create')}}">My Account</a></li>
-                                    <li><a href="{{route('logout')}}">Logkout</a></li>
+                                    <li><a href="{{route('logout')}}">Logout</a></li>
                                     @else
                                     <li><a href="{{route('login.index')}}">Log in</a></li>
                                     @endif
@@ -60,7 +60,15 @@
                         <!-- Mini Cart Brief -->
                         
                     </div>
-                    
+                    <div class="header-cart">
+                        <!-- Cart Toggle -->
+                        
+                        <a class="cart-toggle" href="#">
+                            <img src="" alt="">
+                        </a>
+                        <!-- Mini Cart Brief -->
+                        
+                    </div>
                     
                     
                 </div>

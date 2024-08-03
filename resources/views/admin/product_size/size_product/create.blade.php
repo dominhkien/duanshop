@@ -8,7 +8,7 @@
         <!-- Row -->
         <div class="row">
             <div class="col-xl-12">
-                <a href="{{route('dashboard.index')}}" class="btn btn-primary mb-3">Back List</a>
+                <a href="{{route('product.index')}}" class="btn btn-primary mb-3">Back List</a>
             </div>
             <div class="col-xl-12">
                 <div class="filter cm-content-box box-primary">
@@ -36,14 +36,23 @@
                                                     <option value="{{$item->id}}">{{$item->kich_co}}</option>
                                                 @endforeach
                                             </select>
+                                            @error('size')
+                                                <p class="text-danger">{{$message}}</p>
+                                            @enderror
                                         </div>
                                         <div class="mb-3 text-center">
                                             <label class="form-label">Quatity</label>
                                             <input name="quatity" type="text" class="form-control" style="width: 50%; margin: 0 auto;" >
+                                            @error('quatity')
+                                                <p class="text-danger">{{$message}}</p>
+                                            @enderror
                                         </div>
                                         <div class="mb-3 text-center">
                                             <label class="form-label">Price</label>
                                             <input name="price" type="text" class="form-control" style="width: 50%; margin: 0 auto;" >
+                                            @error('price')
+                                                <p class="text-danger">{{$message}}</p>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>

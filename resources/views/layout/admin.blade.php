@@ -28,10 +28,19 @@
 	<link href="{{asset('admin/vendor/jvmap/jquery-jvectormap.css')}}" rel="stylesheet">
 	<link href="../../cdn.datatables.net/buttons/1.6.4/css/buttons.dataTables.min.css')}}" rel="stylesheet">
 	<link href="{{asset('admin/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css')}}" rel="stylesheet">
-	
+	<link href="{{asset('admin/vendor/sweetalert2/dist/sweetalert2.min.css')}}" rel="stylesheet">
 	<!-- tagify-css -->
 	<link href="{{asset('admin/vendor/tagify/dist/tagify.css')}}" rel="stylesheet">
-	
+	<style>
+        .center-screen {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999; /* Make sure it's on top of other elements */
+}
+
+    </style>
 	<!-- Style css -->
    <link href="{{asset('admin/css/style.css')}}" rel="stylesheet">
 	
@@ -74,7 +83,17 @@
      <script src="{{asset('admin/js/custom.js')}}"></script>
 	<script src="{{asset('admin/js/deznav-init.js')}}"></script>
 	<script src="{{asset('admin/js/demo.js')}}"></script>
+	
+	<script src="{{asset('admin/vendor/sweetalert2/dist/sweetalert2.min.js')}}"></script>
+    <script src="{{asset('admin/js/plugins-init/sweetalert.init.js')}}"></script>
     <script src="{{asset('admin/js/styleSwitcher.js')}}"></script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			document.querySelector(".sweet-success").addEventListener("click", function() {
+				this.closest(".center-screen").style.display = "none";
+			});
+		});
+	</script>
 	
 	
 	

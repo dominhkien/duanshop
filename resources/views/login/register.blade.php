@@ -11,21 +11,35 @@
                 <div class="login-reg-form">
                     <form action="{{route('post.register')}}" method="post">
                         @csrf
+                        <h3>Register</h3>
                         <div class="row">
                             <div class="col-12 mb-20">
                                 <label for="username">Name</label>
                                 <input name="name" id="name" type="text">
+                                @error('name')
+                                    <p class="text-danger">{{$message}}</p>
+                                @enderror
                             </div>
                             <div class="col-12 mb-20">
                                 <label for="">Email <span class="required">*</span></label>
                                 <input name="email" id="email" type="email">
-                                @if (session('message'))
-                                    <p class="text-danger">{{session('message')}}</p>
-                                @endif
+                                @error('email')
+                                    <p class="text-danger">{{$message}}</p>
+                                @enderror
                             </div>
                             <div class="col-12 mb-20">
-                                <label for="password">Passwords <span class="required">*</span></label>
+                                <label for="password">Password <span class="required">*</span></label>
                                 <input name="password" id="password" type="password">
+                                @error('password')
+                                    <p class="text-danger">{{$message}}</p>
+                                @enderror
+                            </div>
+                            <div class="col-12 mb-20">
+                                <label for="password"> Comfirm Password <span class="required">*</span></label>
+                                <input name="password_comfirm" id="password" type="password">
+                                @error('password2')
+                                    <p class="text-danger">{{$message}}</p>
+                                @enderror
                             </div>
                             <div class="col-12 mb-20">
                                 <input value="Done" name="register" class="inline" type="submit">

@@ -34,7 +34,8 @@ class CategoryController extends Controller
     {
         
         $category = Category::create($request->all());
-        return redirect()->route("dashboard.index")->with("success","");
+        
+        return redirect()->route("dashboard.index")->with("success","Successfully");
     }
 
     /**

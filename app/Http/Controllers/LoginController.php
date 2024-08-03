@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
 use App\Models\Account;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,8 +16,10 @@ class LoginController extends Controller
         return view('login.login');
     }
 
-    public function login(Request $request)
+    public function login(LoginRequest $request)
     {
+       
+        
         $data = [
             'email'=> $request->email,
             'password'=> $request->password,
@@ -27,13 +30,11 @@ class LoginController extends Controller
                 return redirect()->route('client.index');
             }
             else{
-                return redirect()->route('dashboard.index');
+                return redirect()->route('dashboard.home');
             }
         }
         else{
-            return back()->with([
-                'message'=>'Email or Password error!'
-            ]);
+            return back();
         }
     }
 
