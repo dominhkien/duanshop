@@ -14,6 +14,6 @@ class DashboardAccountController extends Controller
     }
     public function destroy(string $id){
         Account::where('id',$id)->delete();
-        return back();
+        return back()->with('success','Successfully');
     }
 }

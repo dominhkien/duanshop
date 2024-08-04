@@ -1,6 +1,6 @@
 @extends('layout.admin')
 @section('title')
-    product_size
+    Product & Size
 @endsection
 @section('content')
     <div class="content-body">

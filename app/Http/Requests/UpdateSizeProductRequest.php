@@ -11,7 +11,7 @@ class UpdateSizeProductRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,9 @@ class UpdateSizeProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'size'=>'bail|required|exists:kich_co,id',
+            'quatity'=>'required|integer',
+            'price'=>'required|numeric|min:0'
         ];
     }
 }

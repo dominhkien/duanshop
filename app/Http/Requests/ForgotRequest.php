@@ -22,7 +22,9 @@ class ForgotRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email'=> 'bail|email|required|exists:users,email'
+            'email'=> 'bail|email|required|exists:users,email',
+            'password' => 'bail|required|min:8',
+            'password_comfirm' => 'bail|same:password'
         ];
     }
 }

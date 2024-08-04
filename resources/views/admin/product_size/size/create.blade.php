@@ -26,7 +26,10 @@
                                         
                                         <div class="mb-3 text-center">
                                             <label class="form-label">Size</label>
-                                            <input name="kich_co" type="text" class="form-control" style="width: 50%; margin: 0 auto;" placeholder="Name Size">
+                                            <input name="kich_co" type="text" class="form-control" style="width: 50%; margin: 0 auto;" placeholder="NumberSize">
+                                            @error('kich_co')
+                                                <p class="text-danger">{{$message}}</p>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>

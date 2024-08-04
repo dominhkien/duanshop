@@ -6,6 +6,7 @@ use App\Http\Requests\RegisterRequest;
 use App\Models\Account;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class RegisterController extends Controller
 {
@@ -17,25 +18,23 @@ class RegisterController extends Controller
     
     public function store(RegisterRequest $request)
     {
-        $check = Account::where('email',$request->email)->exists();
-        if($check){
-            return back()->with([
-                'message'=>'Email already exists'
-            ]);
-        }
-        else{
             $data = [
                 'ten'=>$request->name,
                 'email'=>$request->email,
                 'password'=> Hash::make($request->password)
             ];
             $User = Account::create($data);
-            return redirect()->route('login.index')->with(
-                [
-                    'message'=>'Register success!'
-                ]
-                );
-        }
+            Mail::send('login.email.welcome', ['name'=>$request->name,'password' => $request->password,'email'=>$request->email], function ($message) use ($request) {
+                $message->to($request->email);
+                $message->subject('Password recovery email');
+            });
+            if($User){
+                return redirect()->route('login.index')->with('success','Register success!');
+            }
+            else{
+                return back()->with('error','Error');
+            }
+        
     }
 
     /**

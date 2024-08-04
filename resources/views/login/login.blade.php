@@ -10,9 +10,6 @@
 
                 <div class="col-lg-6 col-md-10 col-12 mx-auto">
                     <div class="login-reg-form">
-                        @if (session('message'))
-                            <p class="text-danger">{{ session('message') }}</p>
-                        @endif
                         <form action="{{ route('post.login') }}" method="post">
                             @csrf
                             <h3>Login</h3>
@@ -52,5 +49,29 @@
             </div>
         </div>
     </div>
+    @if (session('success'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                Swal.fire({
+                    title: 'Success!',
+                    text: '{{ session('success') }}',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                });
+            });
+        </script>
+    @endif
+    @if (session('error'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                Swal.fire({
+                    title: 'Error!',
+                    text: '{{ session('error') }}',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+            });
+        </script>
+    @endif
     <!-- PAGE SECTION END -->
 @endsection

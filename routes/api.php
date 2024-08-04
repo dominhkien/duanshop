@@ -21,6 +21,6 @@ use Illuminate\Support\Facades\Route;
 // });
 
 
-Route::get('/list-product', [ProductController::class,'listproduct']);
-Route::get('/product/{id}',[ProductController::class,'getproduct']);
-Route::post('/product',[ProductController::class,'addproduct']);
+// Route::get('/list-product', [ProductController::class,'listproduct']);
+// Route::get('/product/{id}',[ProductController::class,'getproduct']);
+// Route::post('/product',[ProductController::class,'addproduct']);

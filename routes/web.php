@@ -80,28 +80,35 @@ Route::group(['prefix' => 'variantproduct'], function () {
 Route::delete('/account/delete/{id}', [DashboardAccountController::class, 'destroy'])->name('account.delete');
 
 // dashboard
-Route::group(['prefix' => 'dashboard','middleware'=>'checkAdmin'], function () {
+Route::group(['prefix' => 'dashboard', 'middleware' => 'checkAdmin'], function () {
     Route::get('/', [DashboardController::class, 'home'])->name('dashboard.home');
-    Route::get('/brand-category',[DashboardController::class,'index'])->name('dashboard.index');
+    Route::get('/brand-category', [DashboardController::class, 'index'])->name('dashboard.index');
     Route::get('/size', [DashboardSizeController::class, 'index'])->name('dashboardsize.index');
     Route::get('/product', [ProductController::class, 'index'])->name('product.index');
     Route::get('/account', [DashboardAccountController::class, 'index'])->name('account.index');
 });
 Route::get('/', [ClientController::class, 'index'])->name('client.index');
 
+Route::get('/category/{id}', [ClientController::class, 'productcate'])->name('client.productcate');
+Route::get('/pricelow', [ClientController::class, 'pricelow'])->name('client.pricelow');
+Route::get('/pricehigh', [ClientController::class, 'pricehigh'])->name('client.pricehigh');
+Route::get('/search', [ClientController::class, 'search'])->name('client.search');
 // end dashboard
 
 // details
 Route::get('/product-detail/{id}', [DetailController::class, 'index'])->name('detail.index');
 // login
-Route::group(['prefix'=> 'account'],function(){
-    Route::get('/login',[LoginController::class,'index'])->name('login.index');
-    Route::post('/post-login',[LoginController::class,'login'])->name('post.login');
-    Route::get('/register',[RegisterController::class,'create'])->name('register.index');
-    Route::post('/post-register',[RegisterController::class,'store'])->name('post.register');
-    Route::get('/forgot',[ForgotController::class,'index'])->name('forgot.index');
-    Route::post('/post-forgot',[ForgotController::class,'forgot'])->name('post.forgot');
-    Route::get('/logout',[LoginController::class,'logout'])->name('logout');
-    Route::get('/myaccount',[LoginController::class,'create'])->name('myaccount.create');
-    Route::post('/post-myaccount',[LoginController::class,'store'])->name('myaccount.store');
+Route::group(['prefix' => 'account'], function () {
+    Route::get('/login', [LoginController::class, 'index'])->name('login.index');
+    Route::post('/post-login', [LoginController::class, 'login'])->name('post.login');
+    Route::get('/register', [RegisterController::class, 'create'])->name('register.index');
+    Route::post('/post-register', [RegisterController::class, 'store'])->name('post.register');
+    Route::get('/forgot/password', [ForgotController::class, 'index'])->name('forgot.index');
+    Route::post("forgot/password", [ForgotController::class, "forgetPasswordPost"])->name("forgot.post");
+    Route::get("reset/password/{token}/{email}", [ForgotController::class, "resetPassword"])->name("reset.password");
+    Route::post("reset/password/post", [ForgotController::class, "resetPasswordPost"])->name("reset.password.post");
+    Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+    Route::get('/info', [LoginController::class, 'info'])->name('info');
+    Route::get('/update-account', [LoginController::class, 'edit'])->name('myaccount.edit');
+    Route::post('/post-myaccount', [LoginController::class, 'update'])->name('myaccount.update');
 });

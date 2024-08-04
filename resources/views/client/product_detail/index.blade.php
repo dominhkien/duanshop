@@ -28,7 +28,7 @@
                         <!-- Price Ratting -->
                         <div class="price-ratting section">
                             <!-- Price -->
-                            <span class="price float-start"><span class="new">$ {{ $product->gia }}</span></span>
+                            <span class="price float-start"><span class="new">{{ number_format($product->gia) }}VND</span></span>
                             <!-- Ratting -->
                         </div>
                         <!-- Short Description -->
@@ -116,7 +116,7 @@
                             <div class="product-info text-left">
                                 <h5 class="title"><a href="{{route('detail.index',$item->id)}}">{{$item->ten}}</a></h5>
                                 <div class="price-ratting fix">
-                                    {{-- <span class="price float-start"><span class="new">{{$item->gia}}</span></span> --}}
+                                    <span class="price float-center"><span class="new">{{ number_format($item->gia) }}VND</span></span> 
                                 </div>
                             </div>
                         </div>
@@ -132,39 +132,5 @@
     <!-- PRODUCT SECTION END -->
 @endsection
 
-@push('script')
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const listButton = document.querySelectorAll('.btn-size');
-            const listQuantity = document.querySelectorAll('.quantity-size');
 
-            listButton.forEach(item => {
-                const id = item.dataset.size;
 
-                item.addEventListener('click', () => {
-                    // Đặt lại màu của tất cả các nút về màu ban đầu
-                    listButton.forEach(btn => btn.style.backgroundColor = '');
-
-                    // Thay đổi màu của nút được nhấp thành màu đen
-                    item.style.backgroundColor = 'black';
-
-                    listQuantity.forEach(qty => {
-                        const idQuantity = qty.dataset.quantity;
-
-                        if (idQuantity != id) {
-                            qty.style.display = 'none';
-                        } else {
-                            qty.style.display = 'block';
-                        }
-                    });
-                });
-            });
-        });
-    </script>
-@endpush
-<style>
-    .btn-size {
-        /* Thêm các kiểu cho nút ở đây nếu cần */
-        transition: background-color 0.3s;
-    }
-</style>

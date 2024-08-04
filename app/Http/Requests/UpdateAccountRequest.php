@@ -1,10 +1,10 @@
 <?php
+
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class UpdateProductRequest extends FormRequest
+class UpdateAccountRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,16 +22,12 @@ class UpdateProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'ten' => [
-                'bail',
-                'required',
-                'max:255',
-                Rule::unique('san_pham', 'ten')->ignore($this->route('product')),
-            ],
-            'anh' => 'nullable|file|mimes:jpg,png,webp,jpeg',
-            'tl' => 'required|exists:the_loai,id',
-            'th' => 'required|exists:thuong_hieu,id',
-            'mo_ta' => 'bail|required|string',
+            'name' => 'bail|required|max:255',
+            'address' => 'bail|required|string|max:255',
+            'old_password' => 'nullable|required_with:new_password|string',
+            'new_password' => 'nullable|min:8|confirmed',
+            'new_password_confirmation' => 'nullable|required_with:new_password|same:new_password',
+            'image' => 'nullable|file|mimes:jpg,png,webp,jpeg', 
         ];
     }
 }

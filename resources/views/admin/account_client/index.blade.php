@@ -24,8 +24,7 @@
                                     <div class="card-header flex-wrap">
                                         <div>
                                             <h4 class="card-title">Account</h4>
-                                            <p class="m-0 subtitle">Default datatables. Add <code>datatables</code> class in
-                                                root</p>
+                                            
                                         </div>
                                         <ul class="nav nav-tabs dzm-tabs" id="myTab" role="tablist">
                                             <li class="nav-item" role="presentation">
@@ -117,9 +116,7 @@
                                 <div class="card-header flex-wrap d-flex justify-content-between">
                                     <div>
                                         <h4 class="card-title">Comment</h4>
-                                        <p class="m-0 subtitle">datatables with border. Add class
-                                            <code>datatables-bordered</code> with the class <code> datatables</code>
-                                        </p>
+                                        
                                     </div>
                                     <ul class="nav nav-tabs dzm-tabs" id="myTab-1" role="tablist">
                                         <li class="nav-item" role="presentation">
@@ -220,4 +217,18 @@
             </div>
         </div>
     </div>
+    @if (session('success'))
+    <div class="center-screen">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">{{session('success')}}</h4>
+                <div class="card-content">
+                    <div class="sweetalert">
+                        <button class="ms-3 btn btn-success btn sweet-success">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endif
 @endsection

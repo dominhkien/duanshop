@@ -56,5 +56,17 @@
         </div>
     </div>
 </div>
+@if (session('error'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                Swal.fire({
+                    title: 'Error!',
+                    text: '{{ session('error') }}',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+            });
+        </script>
+    @endif
 <!-- PAGE SECTION END -->
 @endsection

@@ -21,8 +21,9 @@ class DetailController extends Controller
             ->get()
             ->sortBy('kich_co');
         $variant_img = Product::where('san_pham.id_the_loai','=', $product->id_the_loai)
-        ->select('san_pham.*')
-      
+        ->join('sanpham_kichco', 'sanpham_kichco.id_sp', '=', 'san_pham.id')
+        ->select('san_pham.*','sanpham_kichco.gia')
+        ->groupBy('san_pham.id', 'san_pham.ten', 'san_pham.anh', 'san_pham.mo_ta', 'san_pham.id_the_loai', 'sanpham_kichco.gia')
         ->take(8)
         ->get();
         

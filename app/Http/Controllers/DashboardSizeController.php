@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreSizeProductRequest;
+use App\Http\Requests\UpdateSizeProductRequest;
 use \App\Models\Size;
 use \App\Models\SizeProduct;
 class DashboardSizeController extends Controller
@@ -50,7 +51,7 @@ class DashboardSizeController extends Controller
         $product = Product::where('id',$id_sp)->select('ten','id')->first();
         return view('admin.product_size.size_product.edit',compact('size','product','variant'));
     }
-    public function update(string $id , Request $request){
+    public function update(string $id , UpdateSizeProductRequest $request){
         $data = [
             'id_sp'=>$request->id_sp,
             'id_kc'=> $request->size,
@@ -58,7 +59,12 @@ class DashboardSizeController extends Controller
             'gia'=> $request->price,
         ];
         
-        SizeProduct::where('id',$id)->update($data);
+       $update= SizeProduct::where('id',$id)->update($data);
+       if($update){
         return redirect()->route('dashboardsize.index')->with("success","Successfully");
+       }else{
+        return back()->with('error','Error');
+       }
+        
     }
 }

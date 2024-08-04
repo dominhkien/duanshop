@@ -22,7 +22,7 @@ class StoreSizeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'kich_co'=>'bail|required|numeric'
         ];
     }
 }
