@@ -57,11 +57,13 @@
                             </ul>
                         </div>
                         <!-- Header Cart -->
+                        @if (Auth::check())
                         <div class="header-cart">
-                            <a class="cart-toggle" href="#">
+                            <a class="cart-toggle" href="{{route('cart.index')}}">
                                 <i class="pe-7s-cart"></i>
                             </a>
                         </div>
+                        @endif
                         <div class="header-cart">
                             @if (Auth::check())
                                 <a href="{{ route('info') }}" class="user-avatar-link" title="My Account">

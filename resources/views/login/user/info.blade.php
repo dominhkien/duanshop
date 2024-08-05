@@ -31,13 +31,23 @@
                         </div>
                     </div>
                 </form>
-                @if (session('success'))
-                    <p class="text-danger text-center">{{session('success')}}</p>
-                @endif
             </div>
         </div>
         
     </div>
 </div>
 <!-- END PAGE SECTION -->
+@if (session('success'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                Swal.fire({
+                    title: 'Success!',
+                    text: '{{ session('success') }}',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                });
+            });
+        </script>
+    @endif
 @endsection
+

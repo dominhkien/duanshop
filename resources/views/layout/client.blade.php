@@ -27,6 +27,8 @@
     <!-- Responsive css -->
     <link rel="stylesheet" href="{{ asset('client/css/responsive.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <style>
         .password-wrapper {
     position: relative;
@@ -64,6 +66,105 @@
             /* Thêm các kiểu cho nút ở đây nếu cần */
             transition: background-color 0.3s;
         }
+        
+
+.btn-size.active {
+    background-color: black;
+    color: white;
+}
+
+.quantity-size input {
+    width: 100px;
+}
+
+.quantity-cart {
+    margin-top: 20px;
+}
+
+.add-to-cart {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.add-to-cart:hover {
+    background-color: darkgrey;
+}
+/* Container cho các nút và ô nhập số lượng */
+.quantity-cart {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Container bên trong .quantity-cart */
+.quantity-cart > div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Nút giảm số lượng */
+.decrease-quantity,
+.increase-quantity {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.decrease-quantity:hover,
+.increase-quantity:hover {
+    background-color: #ddd;
+    border-color: #bbb;
+}
+
+/* Nút tăng số lượng */
+.increase-quantity {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.increase-quantity:hover {
+    background-color: #ddd;
+    border-color: #bbb;
+}
+
+/* Ô nhập số lượng */
+#quantity-input {
+    width: 50px;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* Nút thêm vào giỏ hàng */
+/* .add-to-cart {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-to-cart:hover {
+    background-color: #218838;
+} */
 
     </style>
     <!-- Modernizr JS -->
@@ -99,34 +200,6 @@
                 toggleIcon.textContent = '👁️'; // Change to open eye icon
             }
         }
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const listButton = document.querySelectorAll('.btn-size');
-            const listQuantity = document.querySelectorAll('.quantity-size');
-
-            listButton.forEach(item => {
-                const id = item.dataset.size;
-
-                item.addEventListener('click', () => {
-                    // Đặt lại màu của tất cả các nút về màu ban đầu
-                    listButton.forEach(btn => btn.style.backgroundColor = '');
-
-                    // Thay đổi màu của nút được nhấp thành màu đen
-                    item.style.backgroundColor = 'black';
-
-                    listQuantity.forEach(qty => {
-                        const idQuantity = qty.dataset.quantity;
-
-                        if (idQuantity != id) {
-                            qty.style.display = 'none';
-                        } else {
-                            qty.style.display = 'block';
-                        }
-                    });
-                });
-            });
-        });
     </script>
    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 </body>

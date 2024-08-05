@@ -3,6 +3,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DashboardAccountController;
 use App\Http\Controllers\SizeController;
@@ -97,6 +98,12 @@ Route::get('/search', [ClientController::class, 'search'])->name('client.search'
 
 // details
 Route::get('/product-detail/{id}', [DetailController::class, 'index'])->name('detail.index');
+// Trong web.php
+Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::post('/cart/update', [CartController::class, 'update'])->name('cart.update');
+Route::get('/cart/remove/{id_sp_kc}', [CartController::class, 'remove'])->name('cart.remove');
+
 // login
 Route::group(['prefix' => 'account'], function () {
     Route::get('/login', [LoginController::class, 'index'])->name('login.index');
