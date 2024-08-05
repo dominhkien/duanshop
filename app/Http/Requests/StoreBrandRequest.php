@@ -22,7 +22,7 @@ class StoreBrandRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'ten_thuong_hieu'=>'bail|required|max:255|regex:/^[a-zA-Z]+$/'
         ];
     }
 }

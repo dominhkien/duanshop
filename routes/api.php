@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\ProductController;
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -21,6 +23,8 @@ use Illuminate\Support\Facades\Route;
 // });
 
 
-// Route::get('/list-product', [ProductController::class,'listproduct']);
-// Route::get('/product/{id}',[ProductController::class,'getproduct']);
-// Route::post('/product',[ProductController::class,'addproduct']);
+ Route::get('/list', [CategoryController::class,'index']);
+ Route::get('/show', [CategoryController::class,'show']);
+ Route::get('/update/{id}',[CategoryController::class,'update']);
+ Route::get('/delete/{id}',[CategoryController::class,'destroy']);
+ Route::post('/add',[CategoryController::class,'store']);

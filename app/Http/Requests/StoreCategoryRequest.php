@@ -22,7 +22,7 @@ class StoreCategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'ten_loai'=>'bail|required|max:255|regex:/^[a-zA-Z]+$/'
         ];
     }
 }

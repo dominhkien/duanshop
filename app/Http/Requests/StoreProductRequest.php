@@ -28,7 +28,7 @@ class StoreProductRequest extends FormRequest
 
             'th' => 'required|exists:thuong_hieu,id',
 
-            'mo_ta'=>'bail|required|string'
+            'mo_ta'=>'bail|required'
         ];
     }
 }

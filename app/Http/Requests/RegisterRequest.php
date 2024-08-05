@@ -22,9 +22,9 @@ class RegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'=>'bail|required|max:255',
+            'name'=>'bail|required|max:255|regex:/^[a-zA-Z0-9]+$/',
             'email' => 'bail|required|email|unique:users,email',
-            'password' => 'bail|required|min:8',
+            'password' => 'bail|required|min:8|regex:/[a-z]/|regex:/[A-Z]/|regex:/[0-9]/|regex:/[@$!%*?&]/',
             'confirm_password' => 'bail|same:password'
         ];
     }

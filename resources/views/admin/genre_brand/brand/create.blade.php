@@ -27,6 +27,9 @@
                                         <div class="mb-3 text-center">
                                             <label class="form-label">Brand</label>
                                             <input name="ten_thuong_hieu" type="text" class="form-control" style="width: 50%; margin: 0 auto;" placeholder="Name Brand">
+                                            @error('ten_thuong_hieu')
+                                                <p class="text-danger">{{$message}}</p>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
@@ -42,4 +45,16 @@
         </div>
     </div>
 </div>
+@if (session('error'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                Swal.fire({
+                    title: 'Error!',
+                    text: '{{ session('error') }}',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+            });
+        </script>
+    @endif
 @endsection

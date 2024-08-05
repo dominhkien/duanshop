@@ -12,6 +12,7 @@ use App\Http\Controllers\DashboardSizeController;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\ForgotController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
@@ -98,7 +99,7 @@ Route::get('/search', [ClientController::class, 'search'])->name('client.search'
 
 // details
 Route::get('/product-detail/{id}', [DetailController::class, 'index'])->name('detail.index');
-// Trong web.php
+//cart
 Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/cart/update', [CartController::class, 'update'])->name('cart.update');
@@ -118,4 +119,8 @@ Route::group(['prefix' => 'account'], function () {
     Route::get('/info', [LoginController::class, 'info'])->name('info');
     Route::get('/update-account', [LoginController::class, 'edit'])->name('myaccount.edit');
     Route::post('/post-myaccount', [LoginController::class, 'update'])->name('myaccount.update');
+});
+Route::post('/vnpayment', [PaymentController::class,'vnpay_payment'])->name('payment');
+Route::get('/thanks',function(){
+    return view('client.cart.thanks');
 });

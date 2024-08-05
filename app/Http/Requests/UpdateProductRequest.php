@@ -25,13 +25,13 @@ class UpdateProductRequest extends FormRequest
             'ten' => [
                 'bail',
                 'required',
-                'max:255',
+                'max:255','regex:/^[a-zA-Z0-9]+$/',
                 Rule::unique('san_pham', 'ten')->ignore($this->route('product')),
             ],
             'anh' => 'nullable|file|mimes:jpg,png,webp,jpeg',
             'tl' => 'required|exists:the_loai,id',
             'th' => 'required|exists:thuong_hieu,id',
-            'mo_ta' => 'bail|required|string',
+            'mo_ta' => 'bail|required|regex:/^[a-zA-Z0-9]+$/',
         ];
     }
 }

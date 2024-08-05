@@ -22,8 +22,8 @@ class UpdateSizeProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'size'=>'bail|required|exists:kich_co,id',
-            'quatity'=>'required|integer',
+            'size'=>'bail|required|exists:kich_co,id|regex:/^[0-9]+$/',
+            'quatity'=>'required||regex:/^[0-9]+$/',
             'price'=>'required|numeric|min:0'
         ];
     }
